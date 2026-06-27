@@ -1,21 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:portafolio/screens/welcome_screen.dart'; 
+import "package:flutter/material.dart";
+import "routes/app_routes.dart";
 
 
-void main() {
-  runApp(MiPortafolioApp());
-}
+void main() => runApp(const MyApp());
 
 
-class MiPortafolioApp extends StatelessWidget {
-  const MiPortafolioApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
-  Widget build(BuildContext context) {  
+  Widget build(BuildContext context) {
+   
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // le damos un titulo interno a la aplicacion
-      title: 'Portafolio',
-      home: WelcomeScreen(), 
+     title: "Portafolio Roand", 
+     initialRoute: AppRoutes.initialRoute,
+      
+      routes: AppRoutes.getAppRoutes(),
     );
   }
 }

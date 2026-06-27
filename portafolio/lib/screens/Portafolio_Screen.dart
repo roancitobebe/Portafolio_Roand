@@ -1,13 +1,12 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
-import "contact_screen.dart";
 
 class PortafolioScreen extends StatelessWidget {
   const PortafolioScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // paleta de colores base
+    // armo mi paleta de colores
     final Color cAzulMarino = Color(0xFF1B263B); 
     final Color cCrema = Color(0xFFF8E1B4);
     final Color cPurpura = Color(0xFF8758CA);
@@ -15,17 +14,27 @@ class PortafolioScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: cAzulMarino,
+      
+      
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context , "contacto");
+        },
+        backgroundColor: cAmarillo ,
+        child: FaIcon(FontAwesomeIcons.addressBook , color: cAzulMarino),
+      ),
+      
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
 
-              // seccion del banner principal
+              // armo mi banner y foto
               Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,
              children: [
-                  Container(
+                  SizedBox(
                    height: 150,
                     width: double.infinity,
                     child: Image.asset(
@@ -48,7 +57,7 @@ class PortafolioScreen extends StatelessWidget {
 
               SizedBox(height: 60),
 
-              // estadisticas y datos personales
+              // mis datos personales 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                child: Column(
@@ -65,7 +74,7 @@ class PortafolioScreen extends StatelessWidget {
                       ],),
                     SizedBox(height: 5),
                     Text("@roancitobebe", style: TextStyle(color: cCrema.withOpacity(0.7), fontSize: 16)),
-                  SizedBox(height: 10),
+                 SizedBox(height: 10),
                     Text(
                       "Estudiante de Ingeniería de Sistemas o cajero de MCDonnals",
                       textAlign: TextAlign.center,
@@ -120,30 +129,8 @@ class PortafolioScreen extends StatelessWidget {
                     ),
                   ),],),
 
-              SizedBox(height: 20),
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ContactScreen()),
-                    );
-                  },
-                  icon: FaIcon(FontAwesomeIcons.addressBook), 
-                  label: Text("Formas de contacto"), 
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 45),
-                    backgroundColor: cAmarillo,
-                    foregroundColor: cAzulMarino,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                  ),
-                ),),
-
               SizedBox(height: 25),
 
-              //  botones interactivos
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: GridView.count(
@@ -160,7 +147,6 @@ class PortafolioScreen extends StatelessWidget {
                        showDialog(
                           context: context,
                           builder: (context) {
-                            // tarjeta emergente con imagen
                            return Dialog(
                              backgroundColor: cCrema,
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -172,7 +158,7 @@ class PortafolioScreen extends StatelessWidget {
                                     RotatedBox(
                                   quarterTurns: 3,
                                       child: Text(
-                                        "SOBRE MÍ", 
+                                        "SOBRE MI", 
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: cAzulMarino, letterSpacing: 5)
                                     ),
                                     ),
@@ -182,31 +168,33 @@ class PortafolioScreen extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
-                                            clipBehavior: Clip.antiAlias,
+                                           clipBehavior: Clip.antiAlias,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(15),
                                             ),
                                             child: Image.asset("assets/yo.jpg", fit: BoxFit.contain),
-                                          ),
+                                         ),
                                           SizedBox(height: 15),
                                         Text(
                                             "Soy Roand, actualmente pela bolas y estudiante de Ingeneria de Sistemas soy bastente distraido pero siempre me gusta aprender cosas nuevas. ", 
                                             style: TextStyle(color: cAzulMarino, fontSize: 14)
                                           ),
-                                          SizedBox(height: 20),
+                                        SizedBox(height: 20),
                                           Align(
                                             alignment: Alignment.bottomRight,
                                             child: TextButton(
                                           onPressed: () => Navigator.pop(context),
                                               child: Text("CERRAR", style: TextStyle(color: cPurpura, fontWeight: FontWeight.bold)),
                                             ),
-                                          ),],
-                                      ),),
-                                  ],
-                                ),),
-                            );
-                          },
-                        );},
+                                          
+                                          ),
+                                        ],
+                                 ),),
+                                  ],),
+                              ),);      },
+                       
+                        );
+                      },
                       child: Card(
                        color: cCrema,
                         elevation: 6, 
@@ -218,7 +206,7 @@ class PortafolioScreen extends StatelessWidget {
                             children: [
                               FaIcon(FontAwesomeIcons.ghost, size: 50, color: cPurpura),
                              SizedBox(height: 10),
-                              Text("Sobre mí", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: cAzulMarino)),
+                              Text("Sobre mi", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: cAzulMarino)),
                             ],),
                      ),
                     ),
@@ -250,8 +238,6 @@ class PortafolioScreen extends StatelessWidget {
                                       mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
-                                
-
                                            clipBehavior: Clip.antiAlias,
                                            decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(15),
@@ -275,13 +261,11 @@ class PortafolioScreen extends StatelessWidget {
                                         ],
                                  ),),
                                   ],),
-                              ),);      },
-                       
-                        );
-                      },
+                              ),);  },
+                        );},
                       child: Card(
                         color: cCrema,
-                      elevation: 6,
+                       elevation: 6,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
@@ -312,7 +296,7 @@ class PortafolioScreen extends StatelessWidget {
                                     RotatedBox(
                                       quarterTurns: 3,
                                       child: Text(
-                                         "QUÉ HAGO", 
+                                         "QUE HAGO", 
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: cAzulMarino, letterSpacing: 5)
                                       ),
                                     ),
@@ -357,12 +341,13 @@ class PortafolioScreen extends StatelessWidget {
                          children: [
                               FaIcon(FontAwesomeIcons.utensils, size: 50, color: cPurpura),
                         SizedBox(height: 10),
-                              Text("¿Qué hago?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: cAzulMarino)),
+                              Text("¿Que hago?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: cAzulMarino)),
                             ],
                           ),      ),
             ),
                     ),
 
+                    // comentarios
                     GestureDetector(
                       onTap: () {
                     showDialog(
